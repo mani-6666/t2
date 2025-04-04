@@ -106,7 +106,8 @@ resource "aws_ecs_task_definition" "medusa_task" {
     environment = [
       {
         name  = "DATABASE_URL",
-        value = "postgres://${var.db_user}:${var.db_password}@${aws_db_instance.medusa_db.address}:5432/${aws_db_instance.medusa_db.name}"
+        value = "postgres://${var.db_user}:${var.db_password}@${aws_db_instance.medusa_db.address}:5432/postgres"
+
       },
       {
         name  = "JWT_SECRET",
