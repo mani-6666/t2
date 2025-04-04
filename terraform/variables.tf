@@ -1,13 +1,27 @@
 variable "aws_region" {
-  default = "us-east-1"
+  description = "AWS region"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "medusa_image" {
-  default = "medusajs/medusa:latest"
+  description = "Docker image for Medusa"
+  type        = string
 }
 
-variable "jwt_secret" {}
 variable "db_user" {
-  default = "medusauser"
+  description = "Database username"
+  type        = string
 }
-variable "db_password" {}
+
+variable "db_password" {
+  description = "Database password"
+  type        = string
+  sensitive   = true
+}
+
+variable "jwt_secret" {
+  description = "JWT Secret for authentication"
+  type        = string
+  sensitive   = true
+}

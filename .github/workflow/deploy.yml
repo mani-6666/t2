@@ -26,6 +26,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t talibk/medusa-backend .
+          docker tag talibk/medusa-backend:latest talibk/medusa-backend:latest
+          docker push talibk/medusa-backend:latest
+
       - name: Initialize Terraform
         run: terraform init
 
@@ -35,13 +44,6 @@ jobs:
       - name: Apply Terraform Changes
         run: terraform apply -auto-approve
 
-      - name: Build and Push Docker Image
-        run: |
-          echo "${{ secrets.AWS_ECR_LOGIN }}" | docker login --username AWS --password-stdin <AWS_ECR_REPO>
-          docker build -t medusa-backend .
-          docker tag medusa-backend:latest <AWS_ECR_REPO>/medusa-backend:latest
-          docker push <AWS_ECR_REPO>/medusa-backend:latest
-
-      - name: Update ECS Service
+      - name: Force New Deployment in ECS
         run: |
           aws ecs update-service --cluster medusa-cluster --service medusa-service --force-new-deployment
