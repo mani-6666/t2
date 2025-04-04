@@ -39,8 +39,8 @@ jobs:
          # docker tag talibk/medusa-backend:latest talibk/medusa-backend:latest
           #docker push talibk/medusa-backend:latest
 
-   #   - name: Initialize Terraform
-    #    run: terraform init
+      - name: Initialize Terraform
+        run: terraform init
 
      # - name: Plan Terraform Changes
       #  run: terraform plan
