@@ -51,3 +51,9 @@ jobs:
       - name: Force New Deployment in ECS
         run: |
           aws ecs update-service --cluster medusa-cluster --service medusa-service --force-new-deployment
+          
+      - name: Plan Terraform Destroy
+        run: terraform plan -destroy
+
+      - name: Apply Terraform Destroy
+        run: terraform destroy -auto-approve
