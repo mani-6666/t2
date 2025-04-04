@@ -32,26 +32,26 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
-     # - name: Build and Push Docker Image
+      # - name: Build and Push Docker Image
       #  run: |
-       #   cd ..
-        #  docker build -t talibk/medusa-backend .
-         # docker tag talibk/medusa-backend:latest talibk/medusa-backend:latest
-          #docker push talibk/medusa-backend:latest
+      #   cd ..
+      #  docker build -t talibk/medusa-backend .
+      # docker tag talibk/medusa-backend:latest talibk/medusa-backend:latest
+      #docker push talibk/medusa-backend:latest
 
       - name: Initialize Terraform
         run: terraform init
 
-     # - name: Plan Terraform Changes
-      #  run: terraform plan
+      # - name: Plan Terraform Changes
+      #   run: terraform plan
 
-      #- name: Apply Terraform Changes
-       # run: terraform apply -auto-approve
+      # - name: Apply Terraform Changes
+      #   run: terraform apply -auto-approve
 
-   #   - name: Force New Deployment in ECS
-    #    run: |
-     #     aws ecs update-service --cluster medusa-cluster --service medusa-service --force-new-deployment
-          
+      # - name: Force New Deployment in ECS
+      #   run: |
+      #     aws ecs update-service --cluster medusa-cluster --service medusa-service --force-new-deployment
+
       - name: Plan Terraform Destroy
         run: terraform plan -destroy
 
