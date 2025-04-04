@@ -9,6 +9,9 @@ jobs:
   deploy:
     name: Deploy to AWS
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform # Ensures Terraform commands run inside "terraform/" directory
 
     steps:
       - name: Checkout Repository
@@ -31,6 +34,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
+          cd ..
           docker build -t talibk/medusa-backend .
           docker tag talibk/medusa-backend:latest talibk/medusa-backend:latest
           docker push talibk/medusa-backend:latest
