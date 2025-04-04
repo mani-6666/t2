@@ -1,0 +1,47 @@
+name: Deploy Medusa Backend to AWS ECS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Plan Terraform Changes
+        run: terraform plan
+
+      - name: Apply Terraform Changes
+        run: terraform apply -auto-approve
+
+      - name: Build and Push Docker Image
+        run: |
+          echo "${{ secrets.AWS_ECR_LOGIN }}" | docker login --username AWS --password-stdin <AWS_ECR_REPO>
+          docker build -t medusa-backend .
+          docker tag medusa-backend:latest <AWS_ECR_REPO>/medusa-backend:latest
+          docker push <AWS_ECR_REPO>/medusa-backend:latest
+
+      - name: Update ECS Service
+        run: |
+          aws ecs update-service --cluster medusa-cluster --service medusa-service --force-new-deployment

@@ -24,25 +24,32 @@ This project demonstrates Infrastructure as Code (IaC) using **Terraform** to de
 ## How to Use
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/medusa-ecs-fargate.git
+git clone https://github.com/talibkhan786/medusa-ecs-fargate.git
 cd medusa-ecs-fargate
 ```
 
 ### 2. Set Up Environment Variables
+
 Create a `terraform.tfvars` file or pass variables via CLI:
+
 ```hcl
 jwt_secret    = "your_jwt_secret"
 db_password   = "your_db_password"
 ```
 
 ### 3. Set Up AWS Credentials in GitHub
+
 Go to `Settings > Secrets and variables > Actions` and add:
+
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 
 ### 4. Deploy
+
 Push your changes to `main` branch. GitHub Actions will:
+
 - Initialize Terraform
 - Plan and apply your infrastructure
 - Deploy Medusa backend on ECS
@@ -50,11 +57,13 @@ Push your changes to `main` branch. GitHub Actions will:
 ---
 
 ## Demo Video
+
 [![Watch the video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 ---
 
 ## File Structure
+
 ```
 .
 ├── Dockerfile                     # Medusa backend container
@@ -73,6 +82,7 @@ Push your changes to `main` branch. GitHub Actions will:
 ---
 
 ## Notes
+
 - Make sure your AWS account has proper permissions for ECS, RDS, and VPC.
 - Add a domain + load balancer if you want HTTPS.
 - Adjust the Medusa Docker command if you’re using plugins or custom services.
@@ -80,4 +90,5 @@ Push your changes to `main` branch. GitHub Actions will:
 ---
 
 ## Author
-Your Name – [@yourhandle](https://github.com/yourusername)
+
+Your Name – [@Talib Khan](https://github.com/talibkhan786)
