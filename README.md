@@ -58,7 +58,7 @@ Push your changes to `main` branch. GitHub Actions will:
 
 ## Demo Video
 
-[![Watch the video]([https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://youtu.be/_2-yMCen4F8))
+[![Watch the video]([[https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://youtu.be/_2-yMCen4F8)](https://www.youtube.com/watch?v=_2-yMCen4F8))
 
 ---
 
