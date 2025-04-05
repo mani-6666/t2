@@ -91,4 +91,4 @@ Push your changes to `main` branch. GitHub Actions will:
 
 ## Author
 
-Your Name – [@Talib Khan](https://github.com/talibkhan786)
+– [@Talib Khan](https://github.com/talibkhan786)
