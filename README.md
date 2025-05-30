@@ -1,6 +1,6 @@
 # README.md
 
-## Medusa Backend Deployment on AWS ECS Fargate with Terraform & GitHub Actions
+## Medusa Backend Deployment on AWS ECS Fargate with Terraform and GitHub Actions
 
 This project demonstrates Infrastructure as Code (IaC) using **Terraform** to deploy the **Medusa headless commerce backend** on **AWS ECS with Fargate**, along with a **GitHub Actions** CI/CD pipeline.
 
