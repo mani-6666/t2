@@ -1,5 +1,5 @@
 aws_region     = "us-east-1"
-medusa_image   = "talibk/medusa-backend:latest"
+medusa_image   = "mani628/medusa-backend:latest"
 db_user        = "medusauser"
 db_password    = "your-secure-db-password"
 jwt_secret     = "your-secure-jwt-secret"
